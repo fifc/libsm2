@@ -6,5 +6,5 @@ libsm2
     - 算法实现中调用了libtommath大数库、goldbar的sm3算法，以及asn1c等；
     - 可以在Mac/Linux/Windows/Android/iOS等平台编译；
 
-    由Steven Yi基于simonpang的GM_SM2项目之上开发
+    本项目基于simonpang的GM_SM2项目之上开发
 
