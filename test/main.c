@@ -5,12 +5,6 @@
 #include "test.h"
 #include "base64.h"
 
-#ifdef WIN32
-#pragma comment (lib , "../win32rls/tommath.lib")
-#pragma comment (lib , "../win32rls/sm2_impl.lib")
-#endif // WIN32
-
-
 #define CHECK_RET_TEST(x) { if(x) { printf("err!code:%04x\n", x); exit(x); } };
 
 int main(int argc, char* argv[])
@@ -19,10 +13,10 @@ int main(int argc, char* argv[])
 
 // 	ret = test_sig_veri();
 // 	ret = test_SM3_withZ_value_process();
- 	ret = test_encryption_and_decryption();
- 	//ret = test_signature_and_verify();
+ 	//ret = test_encryption_and_decryption();
+ 	ret = test_signature_and_verify();
  	//ret = test_gen_keypair();
-
+	getchar();
 	return ret;
 }
 

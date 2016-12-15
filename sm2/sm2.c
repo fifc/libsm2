@@ -1,5 +1,3 @@
-
-
 /*
  * sm2 implimentation based upon libTomMath library and goldbar's sm3 project
  *
@@ -13,7 +11,7 @@
  * 3. Guide to Elliptic Curve Cryptography
  *
  */
-
+#include "sm2.h"
 
 /*
  * GM curve params
@@ -34,15 +32,14 @@ const char * param_p= "8542D69E4C044F18E8B92435BF6FF7DE457283915C45517D722EDB8B0
 const char * Xg     = "421DEBD61B62EAB6746434EBC3CC315E32220B3BADD50BDC4C4E6C147FEDD43D";
 const char * Yg     = "0680512BCBB42C07D47349D2153B70C4E5D7FDFCBFA36EA1A85841B9E46E09A2";
 #else
-const char * param_a= SM2_A;
-const char * param_b= SM2_B;
-const char * param_n= SM2_N;
-const char * param_p= SM2_P;
-const char * Xg     = SM2_G_X;
-const char * Yg     = SM2_G_Y;
+LIBSM2_API const char * param_a= SM2_A;
+LIBSM2_API const char * param_b= SM2_B;
+LIBSM2_API const char * param_n= SM2_N;
+LIBSM2_API const char * param_p= SM2_P;
+LIBSM2_API const char * Xg     = SM2_G_X;
+LIBSM2_API const char * Yg     = SM2_G_Y;
 #endif //_DEBUG
 
-#include "sm2.h"
 #include "sm3.h"
 #include "tommath.h"
 #include "stdio.h"

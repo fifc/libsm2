@@ -53,12 +53,12 @@
 // #define SM2_N     "FFFFFFFEFFFFFFFFFFFFFFFFFFFFFFFF7203DF6B21C6052B53BBF40939D54123"
 // #define SM2_G_X   "32C4AE2C1F1981195F9904466A39C9948FE30BBFF2660BE1715A4589334C74C7"
 // #define SM2_G_Y   "BC3736A2F4F6779C59BDCEE36B692153D0A9877CC62A474002DF32E52139F0A0"
-extern const char * param_a;
-extern const char * param_b;
-extern const char * param_n;
-extern const char * param_p;
-extern const char * Xg;
-extern const char * Yg;
+LIBSM2_API const char * param_a;
+LIBSM2_API const char * param_b;
+LIBSM2_API const char * param_n;
+LIBSM2_API const char * param_p;
+LIBSM2_API const char * Xg;
+LIBSM2_API const char * Yg;
 
 //#define KEY_LONG  256
 #define MAX_STRLEN  256
@@ -67,8 +67,6 @@ extern const char * Yg;
 #define CHECK_RET(x) if (x != MP_OKAY){ret = x; \
 fprintf(stderr, "%s(%d):err:%04x;desr:%s;\n", __FILE__, __LINE__, x,  mp_error_to_string(ret)); \
 goto END; }
-
-
 
 #ifdef __cplusplus
 extern "C"{
@@ -289,7 +287,7 @@ int Ecc_points_add(mp_int *result_x,mp_int *result_y,
  * 0 : success
  * other errcode : operation failed
  */
-int Ecc_Sm2_sign(mp_int * mp_r, mp_int * mp_s, 
+LIBSM2_API int Ecc_Sm2_sign(mp_int * mp_r, mp_int * mp_s, 
 				 mp_int * mp_dgst, 
 				 mp_int * mp_rand_k, mp_int * mp_Pri_dA, 
 				 mp_int * mp_Xg, mp_int * mp_Yg, 
@@ -395,7 +393,7 @@ int Byte2Mp_Int(mp_int * mp_tar, unsigned char *src_byte, unsigned long lenSrc);
  *  return :
  *  0 -- ok; other : failed
  */
-int hexCharStr2unsignedCharStr(char *src, unsigned long lsrc, int flag, unsigned char * out, unsigned long * lout);
+LIBSM2_API int hexCharStr2unsignedCharStr(char *src, unsigned long lsrc, int flag, unsigned char * out, unsigned long * lout);
 
 
 int MP_print(mp_int * mp_num);

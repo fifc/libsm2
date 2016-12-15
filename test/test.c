@@ -8,7 +8,26 @@
 #include "test.h"
 #include <string.h>
 
+#ifdef WIN32
 
+#undef CHECK_RET
+#define CHECK_RET(ret) if (ret != 0) goto END;
+//#undef _DEBUG
+void BYTE_print(unsigned char * tar, unsigned long l)
+{
+	for (int i = 0; i<l; i++)
+	{
+		if (i % 4 == 0)
+		{
+			printf(" ");
+		}
+		printf("%02x", tar[i]);
+	}
+	printf("\n");
+}
+
+#endif // WIN32
+#if 0
 int test_sig_veri()
 {
 	printf("\n********\n* Ecc interface signature and verify test\n********\n");
@@ -104,8 +123,6 @@ END:
 	return ret;
 }
 
-
-
 int test_SM3_withZ_value_process()
 {
 	printf("\n********\n* Z value process test\n********\n");
@@ -152,7 +169,7 @@ END:
 	printf("********\n* test end\n********\n");
 	return ret;
 }
-
+#endif // 0
 
 int test_encryption_and_decryption()
 {
@@ -195,7 +212,7 @@ int test_encryption_and_decryption()
 	printf("\n...decdata:%s\n", decData);
 END:
 
-	printf("********\n* test end(%04x)\n********\n", (int)ret);
+	printf("********\n* test end\n********\n");
 	return ret;
 }
 
@@ -219,7 +236,7 @@ int test_signature_and_verify()
 #ifdef _DEBUG
 	char * pubkey_A_XY = "0AE4C7798AA0F119471BEE11825BE46202BB79E2A5844495E97C04FF4DF2548A7C0240F88F1CD4E16352A73C17B7F16F07353E53A176D684A9FE0C6BB798E857";
 	char * prikey = "128B2FA8BD433C6C068C8D803DFF79792A519A55171B1B650C23661D15897263";
-	unsigned long buffLen;
+	unsigned long buffLen = 0;
 	ret = hexCharStr2unsignedCharStr(pubkey_A_XY, strlen(pubkey_A_XY), 0, buff, &buffLen);
 	CHECK_RET(ret);
 	ret = hexCharStr2unsignedCharStr(prikey, strlen(prikey),0, prikeyBuff, &priLen);
@@ -258,12 +275,12 @@ int test_signature_and_verify()
 
 
 END:
-	printf("********\n* test end(%04x)\n********\n", (int)ret);
+	printf("********\n* test end: %d\n********\n", ret);
 	return ret;
 
 }
 
-
+#if 0
 int testPointOnCurve()
 {
 	mp_int mp_rand_k;
@@ -356,7 +373,7 @@ END:
 	
 	return ret;
 }
-
+#endif // 0
 
 int test_gen_keypair()
 {
@@ -381,7 +398,7 @@ END:
 	return ret;
 
 }
-
+#if 0
 int testKDF_SM3()
 {
 	unsigned char buff[200] = {0};
@@ -394,7 +411,7 @@ int testKDF_SM3()
 	return ret;
 	
 }
-
+#endif // 0
 
 char * getVersion()
 {
